@@ -1,17 +1,27 @@
 package ru.sbt.mipt.oop;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Application {
 
     public static void main(String... args) throws IOException {
         // считываем состояние дома из файла
         SmartHome smartHome = SmartHomeFileReader.read();
+
+        ArrayList<EventHandler> handlers = new ArrayList<>();
+        handlers.add(new LightEventProcessor());
+        handlers.add(new DoorEventProcessor());
+
         // начинаем цикл обработки событий
         SensorEvent event = getNextSensorEvent();
+
         while (event != null) {
             System.out.println("Got event: " + event);
-            EventHandler.EventHandler(smartHome, event);
+          //  EventHandler.EventHandler(smartHome, event);
+            for (EventHandler handler : handlers) {
+                handler.EventHandler(smartHome, event);
+            }
             event = getNextSensorEvent();
         }
     }
