@@ -20,7 +20,7 @@ public class Application {
             System.out.println("Got event: " + event);
           //  EventHandler.EventHandler(smartHome, event);
             for (EventHandler handler : handlers) {
-                handler.EventHandler(smartHome, event);
+                handler.handle(smartHome, event);
             }
             event = getNextSensorEvent();
         }
