@@ -21,7 +21,7 @@ public class DoorEventProcessor implements EventHandler {
             }
         }
 
-    private void Doorstatus(SmartHome smartHome,SensorEvent event, Room room, Door door){
+    public void Doorstatus(SmartHome smartHome, SensorEvent event, Room room, Door door){
         if (event.getType() == DOOR_OPEN) {
             door.setOpen(true);
             System.out.println("Door " + door.getId() + " in room " + room.getName() + " was opened.");
