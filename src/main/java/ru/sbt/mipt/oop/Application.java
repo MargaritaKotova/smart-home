@@ -1,17 +1,20 @@
 package ru.sbt.mipt.oop;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.io.IOException;
 
 public class Application {
 
     public static void main(String... args) throws IOException {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("application.xml");
         // считываем состояние дома из файла
-        SmartHome smartHome = SmartHomeFileReader.read();
+        //  SmartHome smartHome = SmartHomeFileReader.read();
         // начинаем цикл обработки событий
         SensorEvent event = getNextSensorEvent();
-        SensorEventObserver sensorEventObserver = new SensorEventObserver();
-        configureHandlers(sensorEventObserver);
-        sensorEventObserver.runEventCycle(smartHome);
+        //  SensorEventObserver sensorEventObserver = new SensorEventObserver();
+        //   configureHandlers(sensorEventObserver);
+        // sensorEventObserver.runEventCycle(smartHome);
     }
 
     private static void configureHandlers(SensorEventObserver observer) {
