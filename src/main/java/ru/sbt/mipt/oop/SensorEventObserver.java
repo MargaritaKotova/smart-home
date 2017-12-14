@@ -2,6 +2,7 @@ package ru.sbt.mipt.oop;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import static ru.sbt.mipt.oop.Application.getNextSensorEvent;
 
@@ -12,8 +13,8 @@ public class SensorEventObserver {
     private Collection<EventHandler> eventHandlers = new ArrayList<>();
     private SmartHome smartHome;
 
-    public SensorEventObserver() {
-
+    public SensorEventObserver(SmartHome smartHome) {
+        this.smartHome = smartHome;
     }
 
     public void runEventCycle(SmartHome smartHome) {
@@ -30,5 +31,9 @@ public class SensorEventObserver {
 
     public void addHandler(EventHandler eventHandler) {
         eventHandlers.add(eventHandler);
+    }
+
+    public void setHandlers(List<EventHandler> handlers) {
+        this.eventHandlers = handlers;
     }
 }
