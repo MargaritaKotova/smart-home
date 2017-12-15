@@ -9,7 +9,7 @@
 
 
     <bean id="smartHome"
-          class="ru.sbt.mipt.oop.HomeJsonFileReader"
+          class="ru.sbt.mipt.oop.SmartHomeFileReader"
           factory-method="read">
     </bean>
 
