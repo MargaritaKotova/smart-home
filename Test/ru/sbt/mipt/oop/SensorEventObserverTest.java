@@ -13,18 +13,17 @@ import static org.mockito.Mockito.verify;
 public class SensorEventObserverTest {
 
         @Test
-        public void test() {
+        public void observertest() {
             SmartHome smartHome = mock(SmartHome.class);
             LightEventProcessor lightEventProcessor = mock(LightEventProcessor.class);
             DoorEventProcessor doorEventProcessor = mock(DoorEventProcessor.class);
             ScenarioRunner scenarioRunner = mock(ScenarioRunner.class);
-
+            SensorEvent sensorEvent = mock(SensorEvent.class);
+                
             SensorEventObserver sensorEventObserver = new SensorEventObserver(smartHome);
             sensorEventObserver.addHandler(lightEventProcessor);
             sensorEventObserver.addHandler(doorEventProcessor);
             sensorEventObserver.addHandler(scenarioRunner);
-
-            SensorEvent sensorEvent = mock(SensorEvent.class);
             sensorEventObserver.Event(sensorEvent);
 
             verify(lightEventProcessor).handle(smartHome, sensorEvent);
