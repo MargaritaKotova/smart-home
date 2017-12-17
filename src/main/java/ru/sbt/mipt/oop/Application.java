@@ -16,7 +16,7 @@ public class Application {
         SmartHome smartHome = ctx.getBean(SmartHome.class);
         SensorEventObserver sensorEventObserver = (SensorEventObserver) ctx.getBean("sensorEventObserver");
 //        configureHandlers(sensorEventObserver);
-        sensorEventObserver.runEventCycle(smartHome);
+        sensorEventObserver.runEventCycle();
     }
 
     private static void configureHandlers(SensorEventObserver observer) {
