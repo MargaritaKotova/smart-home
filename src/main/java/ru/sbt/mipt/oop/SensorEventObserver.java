@@ -17,21 +17,27 @@ public class SensorEventObserver {
         this.smartHome = smartHome;
     }
 
-    public void runEventCycle(SmartHome smartHome) {
+    public void runEventCycle() {
         SensorEvent event = getNextSensorEvent();
 
         while (event != null) {
-            System.out.println("Got event: " + event);
-            for (EventHandler eventHandler : eventHandlers) {
-                eventHandler.handle(smartHome, event);
-            }
+           Event(event);
             event = getNextSensorEvent();
+        }
+    }
+
+   public void Event(SensorEvent event) {
+        System.out.println("Got event: " + event.getType());
+        for (EventHandler handler: eventHandlers) {
+            handler.handle(smartHome, event);
         }
     }
 
     public void addHandler(EventHandler eventHandler) {
         eventHandlers.add(eventHandler);
     }
+
+
 
     public void setHandlers(List<EventHandler> handlers) {
         this.eventHandlers = handlers;
